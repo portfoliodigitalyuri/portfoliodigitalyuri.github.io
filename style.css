@@ -187,3 +187,10 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Caso com uma tela só (lanchonete) */
+.caso-lanchonete .caso-telas { padding-bottom: 0; }
+.caso-lanchonete .t-site { width: 100%; }
+@media (max-width: 46rem) {
+  .caso-lanchonete .caso-telas { display: block; }
+}
