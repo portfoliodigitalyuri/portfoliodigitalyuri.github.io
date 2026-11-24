@@ -29,7 +29,7 @@ a { color: inherit; }
 
 h1, h2, h3 { font-family: var(--titulo); line-height: 1.06; margin: 0; letter-spacing: -0.025em; }
 h1 { font-size: clamp(2.1rem, 4vw, 3.4rem); font-weight: 800; max-width: 19ch; }
-h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 800; max-width: 22ch; }
+h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 800; max-width: 26ch; text-wrap: balance; }
 h3 { font-size: 1.5rem; font-weight: 700; }
 p { margin: 0; }
 
@@ -118,6 +118,12 @@ p { margin: 0; }
 }
 .produto-nota { margin-top: auto; padding-top: 1.3rem; font-size: 0.95rem; color: var(--tinta-suave); }
 
+/* Pontos fortes */
+.fortes { margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem 3rem; }
+.fortes > div { padding-top: 1.1rem; border-top: 3px solid var(--tinta); }
+.fortes dt { font: 700 1.25rem/1.2 var(--titulo); }
+.fortes dd { margin: 0.6rem 0 0; color: var(--tinta-suave); }
+
 /* Projetos */
 .caso {
   margin-top: clamp(3rem, 6vw, 4.5rem);
@@ -191,6 +197,7 @@ p { margin: 0; }
   .topo .botao { margin-left: auto; }
   .hero, .faixa-dentro { grid-template-columns: 1fr; }
   .produtos { grid-template-columns: 1fr; }
+  .fortes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 46rem) {
@@ -202,6 +209,7 @@ p { margin: 0; }
   .t-celular { display: block; grid-column: 2; width: 100%; }
   .caso-uma-tela .caso-telas { display: block; }
   .passos { grid-template-columns: 1fr; }
+  .fortes { grid-template-columns: 1fr; }
   .janela { box-shadow: 6px 6px 0 var(--sinal); }
   .topo .botao { display: none; }
   .marca { margin-right: auto; }
