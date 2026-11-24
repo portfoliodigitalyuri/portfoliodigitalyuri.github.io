@@ -9,18 +9,31 @@ document.querySelectorAll("[data-wa]").forEach((a) => {
   a.rel = "noopener";
 });
 
-// Demonstração do hero: escolhe o negócio e a tela
+// Demonstração do hero: escolhe o projeto e a tela
 const NEGOCIOS = {
   dentista: "clínica odontológica",
   petshop: "pet shop",
   chaveiro: "chaveiro",
+  lanchonete: "lanchonete",
 };
 const TELAS = { "site-hero": "site", inbox: "caixa de entrada", agenda: "agenda" };
+// A lanchonete só tem a tela do cardápio
+const SO_UMA_TELA = { lanchonete: "img/lanchonete-home.png" };
 
 const img = document.getElementById("demo-img");
+const janela = document.getElementById("janela");
+const telas = document.getElementById("demo-telas");
 const estado = { negocio: "dentista", tela: "site-hero" };
 
 function atualizar() {
+  const unica = SO_UMA_TELA[estado.negocio];
+  telas.hidden = Boolean(unica);
+  janela.classList.toggle("janela-unica", Boolean(unica));
+  if (unica) {
+    img.src = unica;
+    img.alt = "Demonstração do cardápio online da lanchonete (dados fictícios)";
+    return;
+  }
   img.src = "img/" + estado.negocio + "-" + estado.tela + ".png";
   img.alt =
     "Demonstração de " + TELAS[estado.tela] + " de " + NEGOCIOS[estado.negocio] + " (dados fictícios)";
