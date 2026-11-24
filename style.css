@@ -26,7 +26,7 @@ a { color: inherit; }
 :focus-visible { outline: 3px solid var(--sinal); outline-offset: 3px; border-radius: 4px; }
 
 h1, h2, h3 { font-family: var(--titulo); line-height: 1.08; margin: 0; letter-spacing: -0.02em; }
-h1 { font-size: clamp(2.2rem, 4.6vw, 3.9rem); font-weight: 800; max-width: 17ch; }
+h1 { font-size: clamp(2rem, 3.8vw, 3.2rem); font-weight: 800; max-width: 20ch; }
 h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; }
 h3 { font-size: 1.5rem; font-weight: 700; }
 p { margin: 0; }
