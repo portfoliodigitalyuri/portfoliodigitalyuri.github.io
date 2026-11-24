@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sites e Sistemas para pequenos negócios</title>
+  <meta name="description" content="Site, caixa de entrada de WhatsApp e agenda para clínicas, pet shops, chaveiros e outros pequenos negócios. Também resolvo outras necessidades de TI. Contato pelo WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+  <a class="marca" href="#inicio">
+    <span class="marca-sinal" aria-hidden="true"></span>
+    <!-- nome da marca: Sites e Sistemas -->
+    <span>Sites e Sistemas</span>
+  </a>
+  <nav class="topo-nav" aria-label="Seções">
+    <a href="#o-que-inclui">O que eu faço</a>
+    <a href="#exemplos">Exemplos</a>
+    <a href="#outras-ti">Outras necessidades de TI</a>
+    <a href="#duvidas">Dúvidas</a>
+  </nav>
+  <a class="botao botao-wa" data-wa data-msg="Oi! Vi seu portfólio e quero saber mais." href="#contato">Chamar no WhatsApp</a>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO: o painel mostra o produto de verdade, trocando de negócio -->
+  <section class="hero">
+    <div class="hero-texto">
+      <h1>Cliente chama no WhatsApp. Você atende de um lugar só e já marca na agenda.</h1>
+      <p class="lede">Faço o site do seu negócio e a caixa de entrada com agenda que fica por trás dele. Quem atende é a sua recepção. O sistema só organiza as conversas e os horários.</p>
+      <div class="hero-acoes">
+        <a class="botao botao-wa botao-grande" data-wa data-msg="Oi! Quero um site com agenda para o meu negócio." href="#contato">Quero para o meu negócio</a>
+        <a class="link" href="#exemplos">Ver exemplos reais</a>
+      </div>
+      <p class="nota">Também resolvo outras necessidades de TI, como computadores, rede, e-mail e backup.</p>
+    </div>
+
+    <div class="demo" id="demo" aria-label="Demonstração do sistema">
+      <div class="demo-negocios" role="tablist" aria-label="Tipo de negócio">
+        <button role="tab" aria-selected="true" data-negocio="dentista">Dentista</button>
+        <button role="tab" aria-selected="false" data-negocio="petshop">Pet shop</button>
+        <button role="tab" aria-selected="false" data-negocio="chaveiro">Chaveiro</button>
+      </div>
+      <div class="janela">
+        <div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img id="demo-img" src="img/dentista-site-hero.png" alt="Site da clínica odontológica de demonstração" width="1440" height="900">
+      </div>
+      <div class="demo-telas" role="tablist" aria-label="Tela">
+        <button role="tab" aria-selected="true" data-tela="site-hero">O site</button>
+        <button role="tab" aria-selected="false" data-tela="inbox">Caixa de entrada</button>
+        <button role="tab" aria-selected="false" data-tela="agenda">Agenda</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE INCLUI -->
+  <section class="bloco" id="o-que-inclui">
+    <h2>O que eu faço</h2>
+    <p class="intro">Faço sites, sistemas de atendimento e agenda, e dou suporte de TI para pequenos negócios. O site com agenda é o que mais entrego, e vem assim:</p>
+    <dl class="inclui">
+      <div>
+        <dt>Site do seu negócio</dt>
+        <dd>Rápido no celular, com seus horários, serviços e endereço. Tem um chat para o visitante falar com você sem sair da página.</dd>
+      </div>
+      <div>
+        <dt>Caixa de entrada compartilhada</dt>
+        <dd>As conversas do WhatsApp e do chat do site chegam na mesma tela. Mais de uma pessoa atende sem se atropelar.</dd>
+      </div>
+      <div>
+        <dt>Agenda</dt>
+        <dd>Horários por profissional, em visão de dia ou de semana. Você marca, remarca e vê o dia de todo mundo.</dd>
+      </div>
+      <div>
+        <dt>Confirmação de horários</dt>
+        <dd>Uma tela com os atendimentos de hoje e um botão para confirmar. O sistema nunca confirma sozinho, quem decide é a sua equipe.</dd>
+      </div>
+    </dl>
+    <p class="aviso">Não tem robô respondendo seus clientes. Cada resposta vem de uma pessoa da sua equipe.</p>
+  </section>
+
+  <!-- EXEMPLOS -->
+  <section class="bloco bloco-largo" id="exemplos">
+    <h2>Três negócios, três jeitos de atender</h2>
+    <p class="intro">Cada exemplo é um site e um painel funcionando, com dados fictícios. A estrutura é a mesma. O vocabulário, as cores e os fluxos mudam conforme o negócio.</p>
+
+    <article class="caso caso-dentista">
+      <div class="caso-texto">
+        <h3>Clínica odontológica</h3>
+        <p>Site calmo, que explica como é a primeira consulta. No painel, a ficha do paciente guarda o que foi combinado e o que já foi pago, e os relatórios mostram consultas por status, profissional e serviço.</p>
+        <ul>
+          <li>Tela de confirmações do dia</li>
+          <li>Tratamentos e pagamentos na ficha</li>
+          <li>Retornos vencidos aparecem para a recepção convidar</li>
+        </ul>
+      </div>
+      <div class="caso-telas">
+        <img class="t-site" src="img/dentista-site-hero.png" alt="Site da clínica: Uma consulta sem pressa, com quem explica cada passo" loading="lazy">
+        <img class="t-painel" src="img/dentista-ficha.png" alt="Ficha do paciente no painel da clínica" loading="lazy">
+        <img class="t-celular" src="img/dentista-site-mobile.png" alt="Site da clínica no celular" loading="lazy">
+      </div>
+    </article>
+
+    <article class="caso caso-petshop">
+      <div class="caso-texto">
+        <h3>Pet shop</h3>
+        <p>Banho e tosa com leva e traz. O painel cadastra o tutor e os pets dele, e a agenda mostra um profissional por coluna: banhista, tosador, motorista.</p>
+        <ul>
+          <li>Tutores com mais de um pet</li>
+          <li>Agenda por profissional</li>
+          <li>Convite de retorno quando o banho está atrasado</li>
+        </ul>
+      </div>
+      <div class="caso-telas">
+        <img class="t-site" src="img/petshop-site-hero.png" alt="Site do pet shop com banho e tosa e leva e traz" loading="lazy">
+        <img class="t-painel" src="img/petshop-ficha.png" alt="Ficha do tutor e dos pets no painel" loading="lazy">
+        <img class="t-celular" src="img/petshop-site-mobile.png" alt="Site do pet shop no celular" loading="lazy">
+      </div>
+    </article>
+
+    <article class="caso caso-chaveiro">
+      <div class="caso-texto">
+        <h3>Chaveiro 24 horas</h3>
+        <p>Quem está trancado fora de casa precisa de resposta rápida. O site manda a localização do cliente direto para a conversa, e a recepção vê o endereço e se o chamado é urgente.</p>
+        <ul>
+          <li>Localização enviada pelo próprio cliente</li>
+          <li>Atendimento no endereço do cliente</li>
+          <li>Chamados urgentes em destaque</li>
+        </ul>
+      </div>
+      <div class="caso-telas">
+        <img class="t-site" src="img/chaveiro-site-hero.png" alt="Site do chaveiro 24 horas com botão de pedir atendimento" loading="lazy">
+        <img class="t-painel" src="img/chaveiro-inbox.png" alt="Caixa de entrada do chaveiro no painel" loading="lazy">
+        <img class="t-celular" src="img/chaveiro-site-mobile.png" alt="Site do chaveiro no celular" loading="lazy">
+      </div>
+    </article>
+  </section>
+
+  <!-- OUTRAS NECESSIDADES -->
+  <section class="bloco" id="outras-ti">
+    <h2>Precisa de outra coisa em TI?</h2>
+    <p class="intro">Nem todo problema pede um sistema novo. Se for algo desta lista, ou parecido, me conte no WhatsApp.</p>
+    <ul class="lista-ti">
+      <li><strong>Computadores e impressoras</strong> lentos, travando ou que não imprimem.</li>
+      <li><strong>Internet e Wi-Fi</strong> que cai ou não chega na sala dos fundos.</li>
+      <li><strong>E-mail com o nome da sua empresa</strong> e o domínio do site.</li>
+      <li><strong>Backup</strong> para você não perder cadastro e planilha de anos.</li>
+      <li><strong>Segurança básica</strong>: senhas, acessos de quem saiu da equipe e proteção contra golpes.</li>
+      <li><strong>Planilha ou sistema sob medida</strong> para uma tarefa que hoje é feita à mão.</li>
+    </ul>
+  </section>
+
+  <!-- COMO FUNCIONA: aqui a numeração faz sentido, é uma sequência -->
+  <section class="bloco" id="como-funciona">
+    <h2>Como funciona</h2>
+    <ol class="passos">
+      <li><strong>Você chama no WhatsApp.</strong> Conta o que o seu negócio faz e como o atendimento acontece hoje.</li>
+      <li><strong>Defino com você o que entra.</strong> Só o site, só o painel, os dois, ou outra necessidade de TI.</li>
+      <li><strong>Monto com a cara do seu negócio.</strong> Seu nome, suas cores, seus serviços e horários.</li>
+      <li><strong>Treino a sua equipe e coloco no ar.</strong> Cada pessoa entra com o próprio e-mail e senha.</li>
+    </ol>
+  </section>
+
+  <!-- DÚVIDAS -->
+  <section class="bloco" id="duvidas">
+    <h2>Dúvidas comuns</h2>
+    <div class="faq">
+      <details>
+        <summary>Tem inteligência artificial respondendo meus clientes?</summary>
+        <p>Não. Quem responde é a sua equipe. O sistema junta as conversas num lugar só e mostra a agenda.</p>
+      </details>
+      <details>
+        <summary>Meus clientes precisam criar conta?</summary>
+        <p>Não. Só a sua equipe tem login. O cliente fala com você pelo WhatsApp ou pelo chat do site.</p>
+      </details>
+      <details>
+        <summary>O sistema marca ou confirma horário sozinho?</summary>
+        <p>Não. A recepção marca, e na tela de confirmações ela decide quem confirmar. Existe uma mensagem automática de confirmação do dia, que fica desligada até você ligar.</p>
+      </details>
+      <details>
+        <summary>Os dados dos meus clientes ficam misturados com os de outros negócios?</summary>
+        <p>Não. Cada negócio tem os dados separados dos demais.</p>
+      </details>
+      <details>
+        <summary>Posso pedir só o site, ou só um serviço de TI?</summary>
+        <p>Pode. O site com agenda é o que eu mais monto, mas o que você precisa define o que eu faço.</p>
+      </details>
+      <details>
+        <summary>Quanto custa?</summary>
+        <p>Depende do que você precisa. Me chame no WhatsApp, conte o seu caso e eu respondo com o valor.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contato" id="contato">
+    <h2>Conte o seu caso pelo WhatsApp</h2>
+    <p>Uma mensagem já basta: qual é o seu negócio e o que hoje atrapalha o seu atendimento.</p>
+    <a class="botao botao-wa botao-grande" data-wa data-msg="Oi! Vi seu portfólio. Meu negócio é " href="#contato">Chamar no WhatsApp</a>
+    <p class="nota-contato">Atendimento em São José do Rio Preto e região.</p>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <span>Sites e Sistemas</span>
+  <span>Os exemplos acima usam dados e nomes fictícios.</span>
+</footer>
+
+<!-- Botão fixo no celular -->
+<a class="wa-fixo botao botao-wa" data-wa data-msg="Oi! Vi seu portfólio e quero saber mais." href="#contato">Chamar no WhatsApp</a>
+
+<script src="app.js"></script>
+</body>
+</html>
