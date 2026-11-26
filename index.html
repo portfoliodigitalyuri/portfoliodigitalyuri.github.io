@@ -51,6 +51,7 @@
       <div class="janela" id="janela">
         <div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i></div>
         <img id="demo-img" src="img/dentista-site-hero.png" alt="Site da clínica odontológica de demonstração" width="1440" height="900">
+        <button class="janela-ampliar" type="button" id="abrir-modal">Ver em tela cheia</button>
       </div>
       <div class="demo-telas" id="demo-telas" role="tablist" aria-label="Tela">
         <button role="tab" aria-selected="true" data-tela="site-hero">O site</button>
@@ -136,7 +137,7 @@
     <h2>Projetos que já montei</h2>
     <p class="intro">Todos funcionam de verdade, com dados fictícios. A base se repete, mas o vocabulário, as cores e os fluxos mudam conforme o negócio.</p>
 
-    <article class="caso">
+    <article class="caso" data-projeto="dentista">
       <div class="caso-texto">
         <h3>Clínica odontológica</h3>
         <p>Site calmo, que explica como é a primeira consulta. No painel, a ficha do paciente guarda o que foi combinado e o que já foi pago, e os relatórios mostram consultas por status, profissional e serviço.</p>
@@ -154,7 +155,7 @@
       </div>
     </article>
 
-    <article class="caso">
+    <article class="caso" data-projeto="petshop">
       <div class="caso-texto">
         <h3>Pet shop</h3>
         <p>Banho e tosa com leva e traz. O painel cadastra o tutor e os pets dele, e a agenda mostra um profissional por coluna: banhista, tosador, motorista.</p>
@@ -172,7 +173,7 @@
       </div>
     </article>
 
-    <article class="caso">
+    <article class="caso" data-projeto="chaveiro">
       <div class="caso-texto">
         <h3>Chaveiro 24 horas</h3>
         <p>Quem está trancado fora de casa precisa de resposta rápida. Com a permissão do cliente, o site monta o link do mapa e ele manda para a conversa. A recepção vê o endereço e se o chamado é urgente.</p>
@@ -190,7 +191,7 @@
       </div>
     </article>
 
-    <article class="caso caso-uma-tela">
+    <article class="caso caso-uma-tela" data-projeto="lanchonete">
       <div class="caso-texto">
         <h3>Lanchonete com pedidos online</h3>
         <p>Cardápio com categorias e promoções, carrinho e acompanhamento do pedido pelo cliente. Do outro lado, a cozinha vê a fila de pedidos e o gerente tem um painel próprio.</p>
@@ -264,6 +265,32 @@
   <span>© 2026 Sites e Sistemas. Todos os direitos reservados. É proibida a cópia, total ou parcial, do conteúdo e dos projetos desta página.</span>
   <span>Os projetos mostrados usam dados e nomes fictícios.</span>
 </footer>
+
+<!-- MODAL: os projetos em tela cheia -->
+<dialog class="modal" id="modal" aria-labelledby="modal-titulo">
+  <div class="modal-topo">
+    <div>
+      <span class="modal-contagem" id="modal-contagem">1 de 4</span>
+      <h2 id="modal-titulo">Clínica odontológica</h2>
+    </div>
+    <button class="modal-fechar" type="button" id="modal-fechar" aria-label="Fechar">&times;</button>
+  </div>
+  <div class="modal-palco" id="modal-palco">
+    <button class="modal-seta" type="button" data-passo="-1" aria-label="Projeto anterior">&#8249;</button>
+    <div class="modal-quadro"><img id="modal-img" src="img/dentista-site-hero.png" alt="" width="1440" height="900"></div>
+    <button class="modal-seta" type="button" data-passo="1" aria-label="Próximo projeto">&#8250;</button>
+  </div>
+  <div class="modal-base">
+    <div class="modal-telas" id="modal-telas" role="tablist" aria-label="Tela">
+      <button role="tab" aria-selected="true" data-mtela="site-hero">O site</button>
+      <button role="tab" aria-selected="false" data-mtela="inbox">Caixa de entrada</button>
+      <button role="tab" aria-selected="false" data-mtela="agenda">Agenda</button>
+    </div>
+    <p class="modal-unica" id="modal-unica" hidden>Cardápio online</p>
+    <div class="modal-pontos" id="modal-pontos" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="modal-dica">Arraste para o lado para trocar de projeto</p>
+  </div>
+</dialog>
 
 <script src="app.js"></script>
 </body>

@@ -188,6 +188,90 @@ p { margin: 0; }
   border-top: 1px solid var(--linha); font-size: 0.9rem; color: var(--tinta-suave);
 }
 
+/* Modal dos projetos */
+.janela { position: relative; }
+.janela img { cursor: zoom-in; }
+.janela-ampliar {
+  position: absolute; right: 0.75rem; bottom: 0.75rem;
+  font: 600 0.85rem var(--texto); color: #fff !important;
+  background: rgba(15, 26, 28, 0.82) !important; border: 0 !important; border-radius: 999px;
+  padding: 0.5rem 0.95rem; cursor: pointer;
+}
+.janela-ampliar:hover { background: var(--tinta) !important; }
+.caso-telas img { cursor: zoom-in; }
+
+html.sem-rolagem { overflow: hidden; }
+.modal {
+  width: min(78rem, calc(100vw - 2rem)); max-width: none; max-height: calc(100dvh - 2rem);
+  padding: 0; border: 1px solid var(--tinta); border-radius: 14px;
+  background: var(--papel); color: var(--tinta);
+  display: none; flex-direction: column; overflow: hidden;
+}
+.modal[open] { display: flex; }
+.modal::backdrop { background: rgba(15, 26, 28, 0.78); }
+.modal-topo {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1rem 1.25rem; border-bottom: 1px solid var(--linha);
+}
+.modal-contagem { font-size: 0.85rem; color: var(--tinta-suave); }
+.modal-topo h2 { font-size: clamp(1.25rem, 2.6vw, 1.7rem); }
+.modal-fechar {
+  width: 2.6rem; height: 2.6rem; flex: none; border-radius: 50%;
+  border: 1px solid var(--linha); background: var(--superficie); color: var(--tinta);
+  font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
+.modal-fechar:hover { border-color: var(--tinta); }
+.modal-palco {
+  flex: 1 1 auto; min-height: 0;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.25rem; touch-action: pan-y;
+}
+.modal-quadro { min-height: 0; height: 100%; display: flex; align-items: center; justify-content: center; }
+.modal-quadro img {
+  max-width: 100%; max-height: calc(100dvh - 14rem); width: auto; height: auto;
+  border: 1px solid var(--tinta); border-radius: 8px; background: var(--superficie);
+  box-shadow: 8px 8px 0 var(--sinal); user-select: none; -webkit-user-drag: none;
+}
+.modal-quadro img.entra { animation: entra 0.25s ease-out; }
+@keyframes entra { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.modal-seta {
+  width: 3rem; height: 3rem; border-radius: 50%;
+  border: 1px solid var(--tinta); background: var(--superficie); color: var(--tinta);
+  font-size: 2rem; line-height: 1; padding-bottom: 0.2rem; cursor: pointer;
+}
+.modal-seta:hover { background: var(--tinta); color: #fff; }
+.modal-base {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem 1.5rem;
+  padding: 0.25rem 1.25rem 1.25rem;
+}
+.modal-telas { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+.modal-telas[hidden], .modal-unica[hidden] { display: none; }
+.modal-telas button, .modal-unica {
+  font: 600 0.95rem var(--texto); color: var(--tinta-suave); margin: 0;
+  background: transparent; border: 1px solid var(--linha); border-radius: 999px;
+  padding: 0.55rem 1.1rem; cursor: pointer;
+}
+.modal-unica { cursor: default; background: var(--tinta); border-color: var(--tinta); color: #fff; }
+.modal-telas button:hover { border-color: var(--tinta); color: var(--tinta); }
+.modal-telas button[aria-selected="true"] { background: var(--tinta); border-color: var(--tinta); color: #fff; }
+.modal-pontos { display: flex; gap: 0.4rem; }
+.modal-pontos i { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--linha); }
+.modal-pontos i.ativo { background: var(--sinal); }
+.modal-dica { display: none; margin: 0; width: 100%; text-align: center; font-size: 0.85rem; color: var(--tinta-suave); }
+@media (pointer: coarse) { .modal-dica { display: block; } }
+
+@media (max-width: 46rem) {
+  .modal { width: 100vw; max-height: 100dvh; height: 100dvh; border-radius: 0; border: 0; }
+  .modal-topo { padding: 0.75rem 1rem; }
+  .modal-palco { grid-template-columns: minmax(0, 1fr); padding: 0.75rem 0.75rem 3.75rem; position: relative; }
+  .modal-seta { position: absolute; bottom: 0.4rem; width: 2.75rem; height: 2.75rem; font-size: 1.7rem; }
+  .modal-seta[data-passo="-1"] { left: calc(50% - 3.5rem); }
+  .modal-seta[data-passo="1"] { right: calc(50% - 3.5rem); }
+  .modal-quadro img { box-shadow: 5px 5px 0 var(--sinal); max-height: calc(100dvh - 17rem); }
+  .modal-base { padding-bottom: 1rem; }
+  .modal-pontos { display: none; }
+}
+
 @media (max-width: 62rem) {
   .topo-nav { display: none; }
   .topo .botao { margin-left: auto; }
