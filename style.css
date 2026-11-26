@@ -92,7 +92,6 @@ p { margin: 0; }
 .janela-barra { display: flex; gap: 0.35rem; padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--linha); background: #f6f8f7; }
 .janela-barra i { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--linha); }
 .janela img { width: 100%; height: calc(100% - 1.7rem); object-fit: cover; object-position: top left; }
-.janela-unica img { object-fit: contain; object-position: top center; background: #fdf7f2; }
 
 /* Blocos */
 .bloco, .contato {
@@ -154,8 +153,6 @@ p { margin: 0; }
 .t-site { width: 82%; }
 .t-painel { position: absolute; right: 0; bottom: 0; width: 56%; box-shadow: 0 10px 30px rgba(15, 26, 28, 0.18); }
 .t-celular { display: none; }
-.caso-uma-tela .caso-telas { padding-bottom: 0; }
-.caso-uma-tela .t-site { width: 100%; }
 
 /* Sob medida: faixa escura de ponta a ponta */
 .faixa { background: var(--tinta); color: var(--papel); }
@@ -255,13 +252,11 @@ html.sem-rolagem { overflow: hidden; }
   padding: 0.25rem 1.25rem 1.25rem;
 }
 .modal-telas { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
-.modal-telas[hidden], .modal-unica[hidden] { display: none; }
-.modal-telas button, .modal-unica {
+.modal-telas button {
   font: 600 0.95rem var(--texto); color: var(--tinta-suave); margin: 0;
   background: transparent; border: 1px solid var(--linha); border-radius: 999px;
   padding: 0.55rem 1.1rem; cursor: pointer;
 }
-.modal-unica { cursor: default; background: var(--tinta); border-color: var(--tinta); color: #fff; }
 .modal-telas button:hover { border-color: var(--tinta); color: var(--tinta); }
 .modal-telas button[aria-selected="true"] { background: var(--tinta); border-color: var(--tinta); color: #fff; }
 .modal-pontos { display: flex; gap: 0.4rem; }
@@ -297,7 +292,6 @@ html.sem-rolagem { overflow: hidden; }
   .t-site { width: 100%; grid-column: 1; }
   .t-painel { display: none; }
   .t-celular { display: block; grid-column: 2; width: 100%; }
-  .caso-uma-tela .caso-telas { display: block; }
   .passos { grid-template-columns: 1fr; }
   .fortes { grid-template-columns: 1fr; }
   .janela { box-shadow: 6px 6px 0 var(--sinal); }

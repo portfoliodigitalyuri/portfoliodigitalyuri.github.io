@@ -9,96 +9,109 @@ document.querySelectorAll("[data-wa]").forEach((a) => {
   a.rel = "noopener";
 });
 
-// Demonstração do hero: escolhe o projeto e a tela
-const NEGOCIOS = {
-  dentista: "clínica odontológica",
-  petshop: "pet shop",
-  chaveiro: "chaveiro",
-  lanchonete: "lanchonete",
+// Projetos e telas de cada um. A ordem aqui é a ordem do modal.
+const ATENDIMENTO = [
+  ["site-hero", "O site"],
+  ["inbox", "Caixa de entrada"],
+  ["agenda", "Agenda"],
+];
+const PROJETOS = {
+  dentista: { titulo: "Clínica odontológica", nome: "clínica odontológica", telas: ATENDIMENTO },
+  petshop: { titulo: "Pet shop", nome: "pet shop", telas: ATENDIMENTO },
+  chaveiro: { titulo: "Chaveiro 24 horas", nome: "chaveiro", telas: ATENDIMENTO },
+  lanchonete: {
+    titulo: "Lanchonete com pedidos online",
+    nome: "lanchonete",
+    telas: [
+      ["home", "Cardápio"],
+      ["carrinho", "Carrinho"],
+      ["cozinha", "Cozinha"],
+    ],
+  },
 };
-const TELAS = { "site-hero": "site", inbox: "caixa de entrada", agenda: "agenda" };
-// A lanchonete só tem a tela do cardápio
-const SO_UMA_TELA = { lanchonete: "img/lanchonete-home.png" };
+const ORDEM = Object.keys(PROJETOS);
+// Telas que têm versão para celular (usada no modal em telas pequenas)
+const TEM_CELULAR = { "site-hero": true, home: true };
 
-const img = document.getElementById("demo-img");
-const janela = document.getElementById("janela");
-const telas = document.getElementById("demo-telas");
 const estado = { negocio: "dentista", tela: "site-hero" };
+const celular = window.matchMedia("(max-width: 46rem)");
 
-function atualizar() {
-  const unica = SO_UMA_TELA[estado.negocio];
-  telas.hidden = Boolean(unica);
-  janela.classList.toggle("janela-unica", Boolean(unica));
-  if (unica) {
-    img.src = unica;
-    img.alt = "Demonstração do cardápio online da lanchonete (dados fictícios)";
-    return;
-  }
-  img.src = "img/" + estado.negocio + "-" + estado.tela + ".png";
-  img.alt =
-    "Demonstração de " + TELAS[estado.tela] + " de " + NEGOCIOS[estado.negocio] + " (dados fictícios)";
+function arquivo(negocio, tela, noCelular) {
+  const t = noCelular && TEM_CELULAR[tela] ? "site-mobile" : tela;
+  return "img/" + negocio + "-" + t + ".png";
+}
+function rotulo(negocio, tela) {
+  const par = PROJETOS[negocio].telas.find(([id]) => id === tela);
+  return par ? par[1] : "";
+}
+function textoAlt(negocio, tela) {
+  return rotulo(negocio, tela) + " · " + PROJETOS[negocio].nome + " (dados fictícios)";
+}
+// Ao trocar de projeto, mantém a tela se ela existir nele; senão, volta para a primeira
+function telaValida() {
+  const telas = PROJETOS[estado.negocio].telas;
+  if (!telas.some(([id]) => id === estado.tela)) estado.tela = telas[0][0];
 }
 
-function ligar(seletor, chave) {
-  const botoes = document.querySelectorAll(seletor);
-  botoes.forEach((b) =>
-    b.addEventListener("click", () => {
-      estado[chave] = b.dataset[chave];
-      botoes.forEach((x) => x.setAttribute("aria-selected", String(x === b)));
-      atualizar();
+// Monta os botões de tela (do topo ou do modal) para o projeto atual
+function montarTelas(container, aoEscolher) {
+  const tinhaFoco = container.contains(document.activeElement);
+  container.replaceChildren(
+    ...PROJETOS[estado.negocio].telas.map(([id, texto]) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", String(id === estado.tela));
+      b.textContent = texto;
+      b.addEventListener("click", () => {
+        estado.tela = id;
+        aoEscolher();
+      });
+      return b;
     })
   );
+  // o botão clicado foi recriado: devolve o foco para o selecionado
+  if (tinhaFoco) container.querySelector('[aria-selected="true"]')?.focus();
 }
-ligar("[data-negocio]", "negocio");
-ligar("[data-tela]", "tela");
+
+// Demonstração do topo
+const img = document.getElementById("demo-img");
+const telas = document.getElementById("demo-telas");
+const botoesNegocio = document.querySelectorAll("[data-negocio]");
+
+function atualizar() {
+  telaValida();
+  botoesNegocio.forEach((b) => b.setAttribute("aria-selected", String(b.dataset.negocio === estado.negocio)));
+  montarTelas(telas, atualizar);
+  img.src = arquivo(estado.negocio, estado.tela, false);
+  img.alt = "Demonstração: " + textoAlt(estado.negocio, estado.tela);
+}
+botoesNegocio.forEach((b) =>
+  b.addEventListener("click", () => {
+    estado.negocio = b.dataset.negocio;
+    atualizar();
+  })
+);
+atualizar();
 
 // Modal: os projetos em tela cheia, trocando com as setas ou arrastando para o lado
-const ORDEM = ["dentista", "petshop", "chaveiro", "lanchonete"];
-const TITULOS = {
-  dentista: "Clínica odontológica",
-  petshop: "Pet shop",
-  chaveiro: "Chaveiro 24 horas",
-  lanchonete: "Lanchonete com pedidos online",
-};
 const modal = document.getElementById("modal");
 const mImg = document.getElementById("modal-img");
 const mTelas = document.getElementById("modal-telas");
-const mBotoes = mTelas.querySelectorAll("[data-mtela]");
 const mPontos = document.querySelectorAll("#modal-pontos i");
-const celular = window.matchMedia("(max-width: 46rem)");
 
 function mostrarModal() {
-  const unica = SO_UMA_TELA[estado.negocio];
+  telaValida();
   const i = ORDEM.indexOf(estado.negocio);
-  document.getElementById("modal-titulo").textContent = TITULOS[estado.negocio];
+  document.getElementById("modal-titulo").textContent = PROJETOS[estado.negocio].titulo;
   document.getElementById("modal-contagem").textContent = i + 1 + " de " + ORDEM.length;
   mPontos.forEach((p, n) => p.classList.toggle("ativo", n === i));
-  mTelas.hidden = Boolean(unica);
-  document.getElementById("modal-unica").hidden = !unica;
-  mBotoes.forEach((b) => b.setAttribute("aria-selected", String(b.dataset.mtela === estado.tela)));
+  montarTelas(mTelas, mostrarModal);
   mImg.classList.remove("entra");
   void mImg.offsetWidth; // reinicia a animação
   mImg.classList.add("entra");
-  if (unica) {
-    mImg.src = unica;
-    mImg.alt = "Cardápio online da lanchonete (dados fictícios)";
-  } else {
-    // no celular, "O site" mostra a versão para celular, que ocupa a tela inteira
-    const tela = estado.tela === "site-hero" && celular.matches ? "site-mobile" : estado.tela;
-    mImg.src = "img/" + estado.negocio + "-" + tela + ".png";
-    mImg.alt = TELAS[estado.tela] + " de " + NEGOCIOS[estado.negocio] + " (dados fictícios)";
-  }
-}
-
-// Mantém a demonstração do topo igual ao que foi visto no modal
-function sincronizarHero() {
-  document.querySelectorAll("[data-negocio]").forEach((b) =>
-    b.setAttribute("aria-selected", String(b.dataset.negocio === estado.negocio))
-  );
-  document.querySelectorAll("[data-tela]").forEach((b) =>
-    b.setAttribute("aria-selected", String(b.dataset.tela === estado.tela))
-  );
-  atualizar();
+  mImg.src = arquivo(estado.negocio, estado.tela, celular.matches);
+  mImg.alt = textoAlt(estado.negocio, estado.tela);
 }
 
 function passo(n) {
@@ -115,16 +128,15 @@ function abrirModal(negocio, tela) {
   modal.showModal();
   // carrega as outras telas enquanto a pessoa olha a primeira
   ORDEM.forEach((n) =>
-    ["site-hero", "inbox", "agenda"].forEach((t) => {
-      const arq = t === "site-hero" && celular.matches ? "site-mobile" : t;
-      if (!SO_UMA_TELA[n]) new Image().src = "img/" + n + "-" + arq + ".png";
+    PROJETOS[n].telas.forEach(([t]) => {
+      new Image().src = arquivo(n, t, celular.matches);
     })
   );
 }
 
 modal.addEventListener("close", () => {
   document.documentElement.classList.remove("sem-rolagem");
-  sincronizarHero();
+  atualizar(); // o topo fica no que foi visto por último
 });
 document.getElementById("modal-fechar").addEventListener("click", () => modal.close());
 // clique fora do conteúdo fecha
@@ -134,13 +146,8 @@ modal.addEventListener("click", (e) => {
 modal.querySelectorAll("[data-passo]").forEach((b) =>
   b.addEventListener("click", () => passo(Number(b.dataset.passo)))
 );
-mBotoes.forEach((b) =>
-  b.addEventListener("click", () => {
-    estado.tela = b.dataset.mtela;
-    mostrarModal();
-  })
-);
-modal.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", (e) => {
+  if (!modal.open) return;
   if (e.key === "ArrowLeft") passo(-1);
   if (e.key === "ArrowRight") passo(1);
 });
@@ -168,7 +175,7 @@ document.querySelectorAll("[data-projeto]").forEach((caso) => {
   caso.querySelectorAll(".caso-telas img").forEach((foto) => {
     foto.tabIndex = 0;
     foto.setAttribute("role", "button");
-    const tela = foto.classList.contains("t-painel") ? "inbox" : "site-hero";
+    const tela = foto.dataset.tela || "site-hero";
     const abrir = () => abrirModal(caso.dataset.projeto, tela);
     foto.addEventListener("click", abrir);
     foto.addEventListener("keydown", (e) => {

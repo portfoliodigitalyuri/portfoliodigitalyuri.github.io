@@ -53,11 +53,7 @@
         <img id="demo-img" src="img/dentista-site-hero.png" alt="Site da clínica odontológica de demonstração" width="1440" height="900">
         <button class="janela-ampliar" type="button" id="abrir-modal">Ver em tela cheia</button>
       </div>
-      <div class="demo-telas" id="demo-telas" role="tablist" aria-label="Tela">
-        <button role="tab" aria-selected="true" data-tela="site-hero">O site</button>
-        <button role="tab" aria-selected="false" data-tela="inbox">Caixa de entrada</button>
-        <button role="tab" aria-selected="false" data-tela="agenda">Agenda</button>
-      </div>
+      <div class="demo-telas" id="demo-telas" role="tablist" aria-label="Tela"></div>
     </div>
   </section>
 
@@ -154,7 +150,7 @@
       </div>
       <div class="caso-telas">
         <img class="t-site" src="img/dentista-site-hero.png" alt="Site da clínica: Uma consulta sem pressa, com quem explica cada passo" loading="lazy">
-        <img class="t-painel" src="img/dentista-ficha.png" alt="Ficha do paciente no painel da clínica" loading="lazy">
+        <img class="t-painel" data-tela="inbox" src="img/dentista-ficha.png" alt="Ficha do paciente no painel da clínica" loading="lazy">
         <img class="t-celular" src="img/dentista-site-mobile.png" alt="Site da clínica no celular" loading="lazy">
       </div>
     </article>
@@ -172,7 +168,7 @@
       </div>
       <div class="caso-telas">
         <img class="t-site" src="img/petshop-site-hero.png" alt="Site do pet shop com banho e tosa e leva e traz" loading="lazy">
-        <img class="t-painel" src="img/petshop-ficha.png" alt="Ficha do tutor e dos pets no painel" loading="lazy">
+        <img class="t-painel" data-tela="inbox" src="img/petshop-ficha.png" alt="Ficha do tutor e dos pets no painel" loading="lazy">
         <img class="t-celular" src="img/petshop-site-mobile.png" alt="Site do pet shop no celular" loading="lazy">
       </div>
     </article>
@@ -190,12 +186,12 @@
       </div>
       <div class="caso-telas">
         <img class="t-site" src="img/chaveiro-site-hero.png" alt="Site do chaveiro 24 horas com botão de pedir atendimento" loading="lazy">
-        <img class="t-painel" src="img/chaveiro-inbox.png" alt="Caixa de entrada do chaveiro no painel" loading="lazy">
+        <img class="t-painel" data-tela="inbox" src="img/chaveiro-inbox.png" alt="Caixa de entrada do chaveiro no painel" loading="lazy">
         <img class="t-celular" src="img/chaveiro-site-mobile.png" alt="Site do chaveiro no celular" loading="lazy">
       </div>
     </article>
 
-    <article class="caso caso-uma-tela" data-projeto="lanchonete">
+    <article class="caso" data-projeto="lanchonete">
       <div class="caso-texto">
         <h3>Lanchonete com pedidos online</h3>
         <p>Cardápio com categorias e promoções, carrinho e acompanhamento do pedido pelo cliente. Do outro lado, a cozinha vê a fila de pedidos e o gerente tem um painel próprio.</p>
@@ -207,7 +203,9 @@
         </ul>
       </div>
       <div class="caso-telas">
-        <img class="t-site" src="img/lanchonete-home.png" alt="Cardápio online da lanchonete de demonstração, com categorias e produtos em promoção" loading="lazy">
+        <img class="t-site" data-tela="home" src="img/lanchonete-home.png" alt="Cardápio online da lanchonete de demonstração, com categorias e produtos em promoção" loading="lazy">
+        <img class="t-painel" data-tela="cozinha" src="img/lanchonete-cozinha.png" alt="Fila da cozinha com um pedido de entrega e um de retirada" loading="lazy">
+        <img class="t-celular" data-tela="home" src="img/lanchonete-site-mobile.png" alt="Cardápio da lanchonete no celular" loading="lazy">
       </div>
     </article>
   </section>
@@ -285,12 +283,7 @@
     <button class="modal-seta" type="button" data-passo="1" aria-label="Próximo projeto">&#8250;</button>
   </div>
   <div class="modal-base">
-    <div class="modal-telas" id="modal-telas" role="tablist" aria-label="Tela">
-      <button role="tab" aria-selected="true" data-mtela="site-hero">O site</button>
-      <button role="tab" aria-selected="false" data-mtela="inbox">Caixa de entrada</button>
-      <button role="tab" aria-selected="false" data-mtela="agenda">Agenda</button>
-    </div>
-    <p class="modal-unica" id="modal-unica" hidden>Cardápio online</p>
+    <div class="modal-telas" id="modal-telas" role="tablist" aria-label="Tela"></div>
     <div class="modal-pontos" id="modal-pontos" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <p class="modal-dica">Arraste para o lado para trocar de projeto</p>
   </div>
